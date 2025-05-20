@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
 
     // Dark mode toggle
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const scrollTopBtn = document.querySelector('.scroll-top');
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
             scrollTopBtn.classList.add('active');
@@ -84,18 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillTabs = document.querySelectorAll('.skill-tab');
     const skillContents = document.querySelectorAll('.skill-content');
 
-    // biome-ignore lint/complexity/noForEach: <explanation>
     skillTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             // Remove active class from all tabs
-            // biome-ignore lint/complexity/noForEach: <explanation>
-                        skillTabs.forEach(t => t.classList.remove('active'));
+            skillTabs.forEach(t => t.classList.remove('active'));
             // Add active class to clicked tab
             tab.classList.add('active');
             
             // Hide all contents
-            // biome-ignore lint/complexity/noForEach: <explanation>
-                                    skillContents.forEach(content => content.classList.remove('active'));
+            skillContents.forEach(content => content.classList.remove('active'));
             
             // Show the selected content
             const targetContent = document.getElementById(tab.getAttribute('data-target'));
@@ -107,19 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
-    // biome-ignore lint/complexity/noForEach: <explanation>
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Remove active class from all buttons
-            // biome-ignore lint/complexity/noForEach: <explanation>
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
+            filterButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
             button.classList.add('active');
             
             const filterValue = button.getAttribute('data-filter');
             
-            // biome-ignore lint/complexity/noForEach: <explanation>
-                        projectCards.forEach(card => {
+            projectCards.forEach(card => {
                 if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                     card.style.display = 'block';
                     setTimeout(() => {
@@ -156,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu when clicking on a nav link (mobile)
     const navItems = document.querySelectorAll('.nav-links li a');
-    // biome-ignore lint/complexity/noForEach: <explanation>
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -169,16 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     
     function setActiveNavLink() {
-        const scrollPosition = window.scrollY + 100;
+        let scrollPosition = window.scrollY + 100;
         
-        // biome-ignore lint/complexity/noForEach: <explanation>
-                sections.forEach(section => {
+        sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
             
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // biome-ignore lint/complexity/noForEach: <explanation>
                 navItems.forEach(item => {
                     item.classList.remove('active');
                     if (item.getAttribute('href') === `#${sectionId}`) {
@@ -190,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Check for hero section (home)
         if (scrollPosition < sections[0].offsetTop) {
-            // biome-ignore lint/complexity/noForEach: <explanation>
             navItems.forEach(item => {
                 item.classList.remove('active');
                 if (item.getAttribute('href') === '#home') {
@@ -213,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Here you would normally send the form data to your backend
@@ -236,11 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add animations when elements are in view
-    const animateOnScroll = () => {
+    const animateOnScroll = function() {
         const elements = document.querySelectorAll('.animate-on-scroll');
         
-        // biome-ignore lint/complexity/noForEach: <explanation>
-                elements.forEach(element => {
+        elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
             
