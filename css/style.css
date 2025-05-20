@@ -231,7 +231,7 @@ img {
 /* Hero Section - Updated for dark mode and AI focus */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.9)), url('../images/hero-bg.jpg') center/cover;
+    background: linear-gradient(rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.9)), url('../images/hero-bg.png') center/cover;
     display: flex;
     align-items: center;
     position: relative;
@@ -239,7 +239,7 @@ img {
 }
 
 body.dark-mode .hero {
-    background: linear-gradient(rgba(18, 18, 38, 0.95), rgba(18, 18, 38, 0.95)), url('../images/hero-bg.jpg') center/cover;
+    background: linear-gradient(rgba(18, 18, 38, 0.95), rgba(18, 18, 38, 0.95)), url('../images/hero-bg.png') center/cover;
 }
 
 /* Highlight AI agent skills with a slight glow effect */
