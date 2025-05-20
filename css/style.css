@@ -19,13 +19,14 @@
 body.dark-mode {
     --primary-color: #8c83ff;
     --secondary-color: #ff8b8b;
-    --dark-color: #ecf0f1;
-    --light-color: #2c3e50;
-    --bg-color: #1a1a2e;
-    --text-color: #ecf0f1;
-    --card-bg: #272741;
-    --border-color: #3f3f5f;
-    --shadow-color: rgba(0, 0, 0, 0.3);
+    --dark-color: #232342; /* Changed to a darker color for elements that use dark-color as background */
+    --light-color: #e0e0e0; /* Lighter for better contrast */
+    --bg-color: #121226;
+    --text-color: #ffffff; /* Pure white for maximum readability */
+    --card-bg: #1e1e3f;
+    --border-color: #3a3a6e;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --gray-color: #b0b0c0; /* Lighter gray for dark mode */
 }
 
 * {
@@ -227,7 +228,7 @@ img {
     transform: translateY(8px);
 }
 
-/* Hero Section - Updated for dark mode */
+/* Hero Section - Updated for dark mode and AI focus */
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.9)), url('../images/hero-bg.jpg') center/cover;
@@ -238,7 +239,22 @@ img {
 }
 
 body.dark-mode .hero {
-    background: linear-gradient(rgba(26, 26, 46, 0.95), rgba(26, 26, 46, 0.95)), url('../images/hero-bg.jpg') center/cover;
+    background: linear-gradient(rgba(18, 18, 38, 0.95), rgba(18, 18, 38, 0.95)), url('../images/hero-bg.jpg') center/cover;
+}
+
+/* Highlight AI agent skills with a slight glow effect */
+#ai-agents .skill-item i {
+    text-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
+}
+
+#ai-agents .skill-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.15);
+}
+
+/* Make AI Agent projects stand out */
+.project-card[data-category="ai-agent"] {
+    border-top: 3px solid var(--primary-color);
 }
 
 .hero-content {
@@ -290,7 +306,7 @@ body.dark-mode .hero {
     animation: fadeInUp 1s both 1.2s;
 }
 
-.social-icons a {
+social-icons a {
     font-size: 20px;
     margin-right: 20px;
     color: var(--dark-color);
@@ -364,6 +380,10 @@ body.dark-mode .hero {
     color: var(--gray-color);
 }
 
+body.dark-mode .about-text p {
+    color: #b0b0c0;
+}
+
 .about-info {
     display: flex;
     margin: 30px 0;
@@ -377,6 +397,10 @@ body.dark-mode .hero {
     font-size: 16px;
     margin-bottom: 5px;
     color: var(--dark-color);
+}
+
+body.dark-mode .info-item h4 {
+    color: #e0e0e0;
 }
 
 .info-item p {
@@ -407,6 +431,11 @@ body.dark-mode .hero {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
+}
+
+body.dark-mode .skill-tab {
+    color: #ffffff; /* Making skill tab text white in dark mode */
+    border-bottom: 2px solid #3a3a6e; /* Darker border for inactive tabs */
 }
 
 .skill-tab.active {
@@ -468,6 +497,94 @@ body.dark-mode .hero {
     border-radius: 3px;
 }
 
+/* Education Section */
+.education-content {
+    margin-top: 60px;
+}
+
+.section-sub-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.section-sub-header h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+body.dark-mode .section-sub-header h3 {
+    color: #e0e0e0;
+}
+
+.education-item {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    margin-bottom: 30px;
+}
+
+.education-item h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.education-place {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.education-date {
+    font-size: 14px;
+    color: var(--gray-color);
+    margin-bottom: 20px;
+}
+
+body.dark-mode .education-date {
+    color: #b0b0c0;
+}
+
+.coursework, .certifications {
+    margin-top: 20px;
+}
+
+.coursework h5, .certifications h5 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+body.dark-mode .coursework h5, 
+body.dark-mode .certifications h5 {
+    color: #e0e0e0;
+}
+
+.coursework-tags, .certification-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.coursework-tags span, .certification-tags span {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .coursework-tags span, 
+body.dark-mode .certification-tags span {
+    background-color: #2a2a50;
+    color: #ffffff;
+}
+
 /* Projects Section */
 .project-filters {
     display: flex;
@@ -491,6 +608,11 @@ body.dark-mode .hero {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
+}
+
+body.dark-mode .filter-btn {
+    border-color: #3a3a6e;
+    color: #e0e0e0;
 }
 
 .projects-container {
@@ -587,6 +709,10 @@ body.dark-mode .hero {
     font-size: 15px;
 }
 
+body.dark-mode .project-info p {
+    color: #b0b0c0;
+}
+
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -623,9 +749,17 @@ body.dark-mode .hero {
     color: var(--dark-color);
 }
 
+body.dark-mode .contact-info h3 {
+    color: #e0e0e0;
+}
+
 .contact-info p {
     color: var(--gray-color);
     margin-bottom: 30px;
+}
+
+body.dark-mode .contact-info p {
+    color: #b0b0c0;
 }
 
 .contact-details {
@@ -678,7 +812,7 @@ body.dark-mode .hero {
     transition: var(--transition);
 }
 
-.social-links a:hover {
+social-links a:hover {
     background-color: var(--primary-color);
     color: white;
 }
@@ -727,6 +861,11 @@ body.dark-mode .hero {
     padding: 30px 0;
     text-align: center;
     color: white;
+}
+
+body.dark-mode .footer {
+    background-color: #13132b; /* Darker background for footer in dark mode */
+    color: #ffffff; /* Ensuring white text in footer */
 }
 
 /* Scroll Top Button */
@@ -829,6 +968,11 @@ body.dark-mode .hero {
     transition: var(--transition);
 }
 
+body.dark-mode .dark-mode-toggle {
+    background-color: #2a2a50; /* Darker background for the toggle in dark mode */
+    color: #ffffff; /* Ensuring white text for better visibility */
+}
+
 .dark-mode-toggle:hover {
     background-color: var(--primary-color);
     color: white;
@@ -849,6 +993,7 @@ body.dark-mode .dark-mode-toggle .fa-moon {
 
 body.dark-mode .dark-mode-toggle .fa-sun {
     display: block;
+    color: #fff; /* Ensuring the sun icon is white for visibility */
 }
 
 /* Media Queries */

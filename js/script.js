@@ -36,10 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Text rotation animation
+    // Update text rotation in hero section
     const textRotate = document.querySelector('.text-rotate');
     if (textRotate) {
-        const words = textRotate.textContent.trim().split(',').map(word => word.trim());
+        const words = [
+            'AI Agents', 
+            'Intelligent Systems', 
+            'LLM Applications',
+            'ML Models'
+        ];
         textRotate.textContent = ''; // Clear the text
         
         let currentWordIndex = 0;
