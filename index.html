@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -103,31 +105,40 @@
                     <h3>Education</h3>
                 </div>
                 <div class="education-item">
-                    <h4>Bachelor of Science in Artificial Intelligence / Cyber Security</h4>
-                    <p class="education-place">Delta University For Science And Technology | New Mansoura, Egypt</p>
-                    <p class="education-date">Expected Graduation: June 2026 | GPA: 3.3/4.0</p>
-                    <div class="coursework">
-                        <h5>Relevant Coursework:</h5>
-                        <div class="coursework-tags">
-                            <span>Artificial Intelligence</span>
-                            <span>Artificial Neural Networks</span>
-                            <span>Natural Language Processing</span>
-                            <span>Machine Learning</span>
-                            <span>Computer Vision</span>
-                            <span>Computational Neuroscience</span>
-                            <span>Cloud Architecture</span>
-                            <span>Database Management Systems</span>
-                            <span>Computer Networks</span>
-                            <span>Data Mining</span>
+                    <div class="education-header">
+                        <div>
+                            <h4>Bachelor of Science in Artificial Intelligence / Cyber Security</h4>
+                            <p class="education-place">Delta University For Science And Technology | New Mansoura, Egypt</p>
+                            <p class="education-date">Expected Graduation: June 2026 | GPA: 3.3/4.0</p>
                         </div>
+                        <button class="toggle-btn" aria-label="Toggle education details">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
-                    <div class="certifications">
-                        <h5>Certifications & Additional Education:</h5>
-                        <div class="certification-tags">
-                            <span>Machine Learning for Production (MLOps)</span>
-                            <span>Mathematics for Machine Learning</span>
-                            <span>Algebra and Differential Calculus for Data Science</span>
-                            <span>HCIA-Cloud Computing V5.5</span>
+                    <div class="education-details">
+                        <div class="coursework">
+                            <h5>Relevant Coursework:</h5>
+                            <div class="coursework-tags">
+                                <span>Artificial Intelligence</span>
+                                <span>Artificial Neural Networks</span>
+                                <span>Natural Language Processing</span>
+                                <span>Machine Learning</span>
+                                <span>Computer Vision</span>
+                                <span>Computational Neuroscience</span>
+                                <span>Cloud Architecture</span>
+                                <span>Database Management Systems</span>
+                                <span>Computer Networks</span>
+                                <span>Data Mining</span>
+                            </div>
+                        </div>
+                        <div class="certifications">
+                            <h5>Certifications & Additional Education:</h5>
+                            <div class="certification-tags">
+                                <span>Machine Learning for Production (MLOps)</span>
+                                <span>Mathematics for Machine Learning</span>
+                                <span>Algebra and Differential Calculus for Data Science</span>
+                                <span>HCIA-Cloud Computing V5.5</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -429,19 +440,26 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="input-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="text" name="name" id="name" placeholder="Your Name" required>
                         </div>
                         <div class="input-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
+                            <input type="email" name="email" id="email" placeholder="Your Email" required>
                         </div>
                         <div class="input-group">
-                            <input type="text" name="subject" placeholder="Subject" required>
+                            <input type="text" name="subject" id="subject" placeholder="Subject" required>
                         </div>
                         <div class="input-group">
-                            <textarea name="message" placeholder="Your Message" required></textarea>
+                            <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <div id="form-status" class="form-status"></div>
                     </form>
+                    <div class="direct-email">
+                        <p>Or email me directly: <a href="mailto:vip.m.osama@gmail.com">vip.m.osama@gmail.com</a></p>
+                    </div>
                 </div>
             </div>
         </div>

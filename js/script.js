@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // biome-ignore lint/suspicious/noRedundantUseStrict: <explanation>
+    'use strict';
+
+    // Initialize EmailJS
+    (() => {
+        // Replace with your EmailJS public key
+        emailjs.init("TDvO0361pl2j9X9bX");
+    })();
 
     // Dark mode toggle
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
@@ -210,28 +218,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form submission
+    // Enhanced form submission with EmailJS
     const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Here you would normally send the form data to your backend
-            // For now, let's just show a success message
+            // Change button text to loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
             
-            const formData = new FormData(contactForm);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
+            // Collect form data
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                to_email: 'vip.m.osama@gmail.com'
+            };
             
-            console.log('Form submitted:', formObject);
-            
-            // Reset the form
-            contactForm.reset();
-            
-            // Show success message (you might want to create a proper notification system)
-            alert('Thank you for your message! I will get back to you soon.');
+            // Send the email using EmailJS
+            emailjs.send('service_b559ynh', 'template_4heoeht', templateParams)
+                .then(() => {
+                    // Show success message
+                    formStatus.innerHTML = '<div class="alert alert-success">Thank you! Your message has been sent.</div>';
+                    contactForm.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Clear success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.innerHTML = '';
+                    }, 5000);
+                })
+                .catch((error) => {
+                    // Show error message
+                    console.error('Email error:', error);
+                    formStatus.innerHTML = '<div class="alert alert-error">Sorry, there was a problem sending your message. Please try again or email me directly.</div>';
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 
@@ -252,6 +286,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', animateOnScroll);
     
+    // Education toggle functionality
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const educationDetails = document.querySelector('.education-details');
+
+    toggleBtn.addEventListener('click', () => {
+        toggleBtn.classList.toggle('active');
+        educationDetails.classList.toggle('active');
+    });
+
     // Initial call to set proper states
     setActiveNavLink();
     animateOnScroll();
